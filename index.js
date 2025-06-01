@@ -56,3 +56,33 @@ function findOdd(A) {
 function longest (s1, s2) {
   return Array.from(new Set(s1 + s2)).sort().join('');
 }
+
+// Algo 5
+
+// Implement a function that computes the difference between two lists. The function should remove all occurrences of elements from the first list (a) that are present in the second list (b). The order of elements in the first list should be preserved in the result.
+
+function arrayDiff(a, b) {
+  return a.filter(element => !b.includes(element));
+}
+
+// Algo 6
+
+// Write a function that accepts an array of 10 integers (between 0 and 9) that returns a string of those numbers in the form of a phone number.
+
+function createPhoneNumber(numbers) {
+  let format = "(xxx) xxx-xxxx";
+  for (var i = 0; i < numbers.length; i++) {
+    format = format.replace('x', numbers[i]);
+  }
+  return format;
+}
+
+// Algo 7
+
+// Write a function that takes in a string of one or more words, and returns the same string, but with all words that have five or more letters reversed (Just like the name of this Kata). Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present.
+
+function spinWords(string) {
+  return string.split(' ').map(w => w.length >= 5 ? w.split('').reverse().join('') : w).join(' ');
+}
+
+console.log(spinWords("Hello world this is me testing the function"));
