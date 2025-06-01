@@ -79,10 +79,33 @@ function createPhoneNumber(numbers) {
 
 // Algo 7
 
-// Write a function that takes in a string of one or more words, and returns the same string, but with all words that have five or more letters reversed (Just like the name of this Kata). Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present.
+// Write a function that takes in a string of one or more words, and returns the same string, but with all words that have five or more letters reversed. Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present.
 
 function spinWords(string) {
   return string.split(' ').map(w => w.length >= 5 ? w.split('').reverse().join('') : w).join(' ');
 }
 
-console.log(spinWords("Hello world this is me testing the function"));
+// Algo 8
+
+// Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
+
+function solution(str) {
+  const pairs = [];
+  for (let i = 0; i < str.length; i += 2) {
+    if (i + 1 < str.length) {
+      pairs.push(str[i] + str[i + 1]);
+    } else {
+      pairs.push(str[i] + '_');
+    }
+  }
+  return pairs;
+}
+
+// Algo 9
+
+// Given [n], take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
+
+function digitalRoot(n) {
+  return n < 10 ? n : digitalRoot(n.toString().split('').reduce((sum, digit) => sum + parseInt(digit, 10), 0)); 
+}
+
