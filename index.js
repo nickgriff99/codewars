@@ -143,3 +143,34 @@ function towerBuilder(nFloors) {
   return tower;
 }
 
+// Algo 12
+
+// Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+
+function duplicateCount(text) {
+  let lowerText = text.toLowerCase();
+  let charCount = {};
+  for (const char of text.toLowerCase()) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+  return Object.values(charCount).filter(count => count > 1).length;
+};
+
+// Algo 13
+
+// The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+
+function duplicateEncode(word) {
+  var lowerWord = word.toLowerCase();
+  var result = '';
+  for (var i = 0; i < word.length; i++) {
+    if (lowerWord.lastIndexOf(lowerWord[i]) === lowerWord.indexOf(lowerWord[i])) {
+      result += '(';
+    } else {
+      result += ')';
+    }
+  }
+  return result;
+}
+
+console.log(duplicateEncode("success"));
