@@ -129,3 +129,17 @@ function findUniq(arr) {
   }
 }
 
+// Algo 11
+
+// Build a pyramid-shaped tower, as an array/list of strings, given a positive integer number of floors. A tower block is represented with "*" character.
+
+function towerBuilder(nFloors) {
+  const tower = [];
+  for (let i = 0; i < nFloors; i++) {
+    const space = ' '.repeat(nFloors - i - 1);
+    const star = '*'.repeat(2 * i + 1);
+    tower.push(space + star + space);
+  }
+  return tower;
+}
+
