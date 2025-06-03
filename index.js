@@ -232,3 +232,26 @@ var uniqueInOrder = function(iterable) {
   return result;
 }
 
+// Algo 18
+
+// Write a method that takes an array of consecutive (increasing) letters as input and that returns the missing letter in the array.
+
+// You will always get an valid array. And it will be always exactly one letter be missing. The length of the array will always be at least 2.
+// The array will always contain letters in only one case.
+// Example:
+// ['a','b','c','d','f'] -> 'e'
+// ['O','Q','R','S'] -> 'P'
+// (Use the English alphabet with 26 letters!)
+
+function findMissingLetter(array) {
+  const isUpperCase = array[0] === array[0].toUpperCase();
+  const alphabet = isUpperCase ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' : 'abcdefghijklmnopqrstuvwxyz';
+  const starting = alphabet.indexOf(array[0]);
+  for (let i = 0; i < array.length; i++) {
+    const expected = alphabet[starting + i];
+    if (array[i] !== expected) {
+      return expected;
+    }
+  }
+}
+
