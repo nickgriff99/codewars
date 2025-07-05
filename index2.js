@@ -233,3 +233,35 @@ String.prototype.camelCased = function() {
     .map(word => word[0].toUpperCase() + word.slice(1))
     .join("");
 }
+
+// Algo 9
+
+// Write a function that accepts a string, and returns true if it is in the form of a phone number.
+// Assume that any integer from 0-9 in any of the spots will produce a valid phone number.
+
+// Only worry about the following format:
+// (123) 456-7890 (don't forget the space after the close parentheses)
+
+// Examples:
+
+// "(123) 456-7890"  => true
+// "(1111)555 2345"  => false
+// "(098) 123 4567"  => false
+
+function validPhoneNumber(phoneNumber) {
+  if (phoneNumber.length !== 14) return false;
+  if (
+    phoneNumber[0] !== "(" ||
+    phoneNumber[4] !== ")" ||
+    phoneNumber[5] !== " " ||
+    phoneNumber[9] !== "-"
+  ) {
+    return false;
+  }
+  for (let i of [1, 2, 3, 6, 7, 8, 10, 11, 12, 13]) {
+    if (phoneNumber[i] < "0" || phoneNumber[i] > "9") return false;
+  }
+  return true;
+}
+
+console.log(validPhoneNumber("(123) 456-7890"))
