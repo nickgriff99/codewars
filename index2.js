@@ -319,5 +319,27 @@ function pyramid(n) {
   return result;
 }
 
-console.log(pyramid(2));
+// Algo 12
 
+// Write a function that, given a depth n, returns n top rows of Pascal's Triangle flattened into a one-dimensional list/array.
+
+// Example:
+// n = 1: [1]
+// n = 2: [1,  1, 1]
+// n = 4: [1,  1, 1,  1, 2, 1,  1, 3, 3, 1]
+// Note
+// Beware of overflow. Requested terms of a triangle are guaranteed to fit into the returned type, but depending on selected method of calculations, intermediate values can be larger.
+
+function pascalsTriangle(n) {
+  let result = [];
+  let previous = [];
+  for (let row = 0; row < n; row++) {
+    if (row === 0) {
+      previous = [1];
+    } else {
+      previous = [1, ...previous.map((_, i, arr) => arr[i] + (arr[i + 1] || 0)).slice(0, -1), 1];
+    }
+    result.push(previous.slice());
+  }
+  return result.flat();
+}
