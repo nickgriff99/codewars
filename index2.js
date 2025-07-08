@@ -416,3 +416,29 @@ function goodVsEvil(good, evil) {
   if (evilTotal > goodTotal) return "Battle Result: Evil eradicates all trace of Good";
   return "Battle Result: No victor on this battle field";
 }
+
+// Algo 15
+
+// Return the century of the input year. The input will always be a 4 digit string, so there is no need for validation.
+
+// Examples
+// "1999" --> "20th"
+// "2011" --> "21st"
+// "2154" --> "22nd"
+// "2259" --> "23rd"
+// "1124" --> "12th"
+// "2000" --> "20th"
+
+function whatCentury(year) {
+  const century = Math.ceil(Number(year) / 100);
+  const lastTwo = century % 100;
+  let suffix = "th";
+  if (lastTwo < 11 || lastTwo > 13) {
+    switch (century % 10) {
+      case 1: suffix = "st"; break;
+      case 2: suffix = "nd"; break;
+      case 3: suffix = "rd"; break;
+    }
+  }
+  return century + suffix;
+}
