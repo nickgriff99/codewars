@@ -467,3 +467,33 @@ function nthFibo(n) {
   }
   return b;
 }
+
+// Algo 17
+
+// In this kata you are given a string for example:
+
+// "example(unwanted thing)example"
+// Your task is to remove everything inside the parentheses as well as the parentheses themselves.
+
+// The example above would return:
+
+// "exampleexample"
+// Notes
+// Other than parentheses only letters and spaces can occur in the string. Don't worry about other brackets like "[]" and "{}" as these will never appear.
+// There can be multiple parentheses.
+// The parentheses can be nested.
+
+function removeParenthesis(s) {
+  let result = [];
+  let level = 0;
+  for (let char of s) {
+    if (char === '(') {
+      level++;
+    } else if (char === ')') {
+      level--;
+    } else if (level === 0) {
+      result += char;
+    }
+  }
+  return result;
+}
